@@ -1,0 +1,1 @@
+export default function Temporal() { return <div className="p-8 text-slate-400">Módulo en construcción...</div>; }
