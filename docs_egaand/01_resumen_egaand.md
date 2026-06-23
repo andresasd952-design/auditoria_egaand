@@ -1,13 +1,19 @@
 # Resumen Ejecutivo: Portal de Clientes ConectaTel
 
-**Auditor Responsable:** Andrés Sebastián Egaña Flores  
-**Proyecto:** `auditoria_egaand`  
-**Entidad Auditada:** ConectaTel  
+## 1. Envergadura Operacional y Rol en la Red
 
----
+**ConectaTel** opera como un Proveedor de Servicios de Internet (ISP) de alta capacidad dentro de la infraestructura de telecomunicaciones. La compañía provee conectividad continua a miles de usuarios, atributo que la define como un nodo crítico para la red digital local. Para garantizar la disponibilidad y calidad del servicio en los segmentos residencial y corporativo, la organización procesa, enruta y almacena diariamente altos volúmenes de datos de tráfico e información de clientes.
 
-ConectaTel se posiciona como un pilar fundamental en la infraestructura de telecomunicaciones, operando como un Proveedor de Servicios de Internet (ISP) de alta capacidad. La envergadura operacional de la compañía abarca el suministro ininterrumpido de conectividad a miles de usuarios, lo que la convierte en una entidad crítica para el ecosistema digital local. Como eje central de estas operaciones, la organización procesa, enruta y almacena diariamente volúmenes masivos de información confidencial, garantizando la estabilidad, disponibilidad y calidad del servicio para suscriptores tanto residenciales como corporativos.
+## 2. Superficie de Exposición y Activos Custodiados
 
-El ecosistema digital de la empresa tiene como núcleo su portal de clientes, el cual funciona como una sucursal virtual integral de autogestión y administración. Esta plataforma ha sido diseñada para centralizar la interacción continua con los usuarios, custodiando activos de información sumamente críticos para el negocio: la base de datos personal de los suscriptores, el detalle de los planes contratados y los registros de tráfico de la red. Al ser el punto de convergencia directo entre la infraestructura interna de ConectaTel y el acceso público en internet, este portal representa la superficie de exposición más sensible de la organización.
+El portal de clientes centraliza las operaciones de autogestión de los usuarios. Al funcionar como la interfaz directa entre la red interna de ConectaTel y la internet pública, este aplicativo conforma la principal superficie de exposición de la entidad. Esta plataforma custodia tres activos de información de alto valor para el negocio:
 
-En consecuencia, cualquier vulnerabilidad presente en este portal trasciende la categoría de una simple falla técnica de software para convertirse en un riesgo de negocio de nivel letal. La explotación de debilidades en esta infraestructura no solo compromete la continuidad operativa de la compañía, sino que expone directamente la privacidad del tráfico de telecomunicaciones de los clientes. Una brecha de esta magnitud provocaría una violación severa a la normativa legal vigente sobre protección de datos personales, desencadenando daños reputacionales irreversibles, sanciones económicas paralizantes por parte de los entes reguladores y la pérdida absoluta de la confianza del mercado.
+* **Bases de datos de los suscriptores**
+* **Parámetros de los planes contratados**
+* **Registros de actividad de la red**
+
+## 3. Riesgo Operacional e Impacto Legal
+
+La presencia de vulnerabilidades en este portal representa un **riesgo operacional de impacto crítico**. Un compromiso de la infraestructura afectaría la continuidad de los servicios y expondría la privacidad de las comunicaciones de los suscriptores. 
+
+La materialización de una brecha de datos en este nivel desencadenaría el incumplimiento de la legislación sobre protección de información de carácter personal; esto conlleva la imposición de **multas regulatorias, pasivos financieros y la consecuente pérdida de posicionamiento comercial**.

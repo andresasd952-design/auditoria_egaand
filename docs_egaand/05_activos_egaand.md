@@ -1,8 +1,5 @@
 # Identificación de Activos de Información: ConectaTel (ISP)
 
-**Auditor Responsable:** Andrés Sebastián Egaña Flores  
-**Alcance:** Evaluación de Activos y Riesgos según la Industria (Criterio 3.1.2)
-
 ---
 
 En su calidad de Proveedor de Servicios de Internet (ISP), la postura de ciberseguridad y cumplimiento normativo de ConectaTel depende de la resiliencia de su infraestructura de enrutamiento y la protección de su cartera de clientes. El portal web auditado actúa como el punto de acceso y custodia de tres activos de información primordiales para el negocio. 
