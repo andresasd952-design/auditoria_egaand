@@ -1,74 +1,36 @@
-import { ShieldAlert, Server, HardDrive, Cpu } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
-function Resumen() {
+export default function Resumen() {
   return (
-    <div className="space-y-8 animate-fadeIn">
+    <div className="space-y-6 text-slate-100 animate-fadeIn">
       
-      {/* Banner de Cabecera */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-700/80 rounded-2xl p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute -right-10 -bottom-10 text-slate-700/20 pointer-events-none">
-          <Server size={280} />
+      {/* Barra superior de contexto */}
+      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+        <div className="p-2.5 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 shrink-0">
+          <BookOpen size={24} />
         </div>
-        <div className="max-w-2xl relative z-10">
-          <span className="px-3 py-1 bg-red-500/20 border border-red-500/40 rounded-full text-red-400 font-mono text-xs uppercase tracking-wider">
-            Informe de Diagnóstico Ejecutivo
-          </span>
-          <h2 className="text-3xl font-extrabold text-white mt-3 mb-2">
-            Superficie de Exposición: ConectaTel
-          </h2>
-          <p className="text-slate-300 text-sm leading-relaxed">
-            Evaluación de vulnerabilidades web y de infraestructura sobre la sucursal virtual de autogestión de clientes del Proveedor de Servicios de Internet (ISP).
-          </p>
+        <div>
+          <h1 className="text-2xl font-bold text-white">Resumen Ejecutivo: Portal de Clientes ConectaTel</h1>
+          <span className="text-xs font-mono text-red-400">Ruta de origen: docs_egaand/01_resumen_egaand.md</span>
         </div>
       </div>
 
-      {/* Grid de 3 Pilares Operacionales */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {/* CONTENEDOR VERBATIM (Copia 100% literal del Markdown) */}
+      <article className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 space-y-6 font-sans text-sm leading-relaxed text-slate-300 shadow-xl">
         
-        <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
-          <div className="text-blue-400 mb-3"><Server size={24} /></div>
-          <h3 className="font-bold text-white text-base mb-1">Envergadura ISP</h3>
-          <p className="text-slate-400 text-xs leading-relaxed">
-            Suministro de conectividad troncal de fibra óptica a miles de usuarios residenciales y enlaces dedicados corporativos a nivel regional.
-          </p>
-        </div>
+        <p>
+          ConectaTel se posiciona como un pilar fundamental en la infraestructura de telecomunicaciones, operando como un Proveedor de Servicios de Internet (ISP) de alta capacidad. La envergadura operacional de la compañía abarca el suministro ininterrumpido de conectividad a miles de usuarios, lo que la convierte en una entidad crítica para el ecosistema digital local. Como eje central de estas operaciones, la organización procesa, enruta y almacena diariamente volúmenes masivos de información confidencial, garantizando la estabilidad, disponibilidad y calidad del servicio para suscriptores tanto residenciales como corporativos.
+        </p>
 
-        <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
-          <div className="text-emerald-400 mb-3"><Cpu size={24} /></div>
-          <h3 className="font-bold text-white text-base mb-1">Núcleo Virtual</h3>
-          <p className="text-slate-400 text-xs leading-relaxed">
-            El portal auditado opera como la sucursal virtual de autogestión, centralizando pagos, cambios de planes y reportes de averías técnicas.
-          </p>
-        </div>
+        <p>
+          El ecosistema digital de la empresa tiene como núcleo su portal de clientes, el cual funciona como una sucursal virtual integral de autogestión y administración. Esta plataforma ha sido diseñada para centralizar la interacción continua con los usuarios, custodiando activos de información sumamente críticos para el negocio: la base de datos personal de los suscriptores, el detalle de los planes contratados y los registros de tráfico de la red. Al ser el punto de convergencia directo entre la infraestructura interna de ConectaTel y el acceso público en internet, este portal representa la superficie de exposición más sensible de la organización.
+        </p>
 
-        <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
-          <div className="text-purple-400 mb-3"><HardDrive size={24} /></div>
-          <h3 className="font-bold text-white text-base mb-1">Custodia Crítica</h3>
-          <p className="text-slate-400 text-xs leading-relaxed">
-            Almacenamiento en bases de datos de información personal identificable (PII), perfiles lógicos de ancho de banda y metadatos de tráfico.
-          </p>
-        </div>
+        <p>
+          En consecuencia, cualquier vulnerabilidad presente en este portal trasciende la categoría de una simple falla técnica de software para convertirse en un riesgo de negocio de nivel letal. La explotación de debilidades en esta infraestructura no solo compromete la continuity operativa de la compañía, sino que expone directamente la privacidad del tráfico de telecomunicaciones de los clientes. Una brecha de esta magnitud provocaría una violación severa a la normativa legal vigente sobre protección de datos personales, desencadenando daños reputacionales irreversibles, sanciones económicas paralizantes por parte de los entes reguladores y la pérdida absoluta de la confianza del mercado.
+        </p>
 
-      </div>
-
-      {/* Caja de Advertencia de Negocio */}
-      <div className="bg-red-950/30 border-2 border-red-500/40 rounded-2xl p-6 flex gap-4 items-start">
-        <div className="p-3 bg-red-500 rounded-xl text-white mt-1">
-          <ShieldAlert size={24} />
-        </div>
-        <div className="space-y-1 text-slate-300 text-sm leading-relaxed">
-          <h4 className="text-white font-bold text-base flex items-center gap-2">
-            <span>Riesgo de Negocio Letal</span>
-            <span className="text-xs font-mono bg-red-500/20 text-red-300 px-2 py-0.5 rounded border border-red-500/30">Criterio Transversal</span>
-          </h4>
-          <p>
-            Una vulnerabilidad en este portal no representa una simple falla de software; en el rubro de las telecomunicaciones constituye un vector letal. Su explotación expone la privacidad del tráfico de red de los suscriptores y viola de forma directa la legislación vigente sobre protección de datos personales y ciberseguridad, arriesgando la revocación de la licencia de operación.
-          </p>
-        </div>
-      </div>
-
+      </article>
     </div>
   );
 }
-
-export default Resumen;
