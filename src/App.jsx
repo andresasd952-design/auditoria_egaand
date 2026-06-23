@@ -1,144 +1,136 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { 
-  Shield, BookOpen, Database, Code, Terminal as TerminalIcon, 
-  Layers, Grid, Sliders, RefreshCw, Bot, Server, Activity 
-} from 'lucide-react';
+  Shield, 
+  BookOpen, 
+  Database, 
+  Code, 
+  Terminal, 
+  Layers, 
+  Grid, 
+  Sliders, 
+  RefreshCw, 
+  Bot, 
+  Zap,
+  Github 
+} from "lucide-react";
 
-// Importación de las 9 pantallas modulares
-import Resumen from './components/Resumen';
-import InyeccionSQL from './components/InyeccionSQL';
-import XSS from './components/XSS';
-import Comandos from './components/Comandos';
-import Activos from './components/Activos';
-import Matriz from './components/Matriz';
-import Controles from './components/Controles';
-import Recuperacion from './components/Recuperacion';
-import Prompts from './components/Prompts';
+// Importación de los 9 módulos secundarios
+import Resumen from "./components/Resumen";
+import InyeccionSQL from "./components/InyeccionSQL";
+import XSS from "./components/XSS";
+import Comandos from "./components/Comandos";
+import Activos from "./components/Activos";
+import Matriz from "./components/Matriz";
+import Controles from "./components/Controles";
+import Recuperacion from "./components/Recuperacion";
+import Prompts from "./components/Prompts";
 
-function App() {
-  const [vistaActual, setVistaActual] = useState('Resumen');
+export default function App() {
+  const [vista, setVista] = useState("resumen");
 
-  const menuNavegacion = [
-    { id: 'Resumen', titulo: 'Resumen del Negocio', icono: <BookOpen size={18} /> },
-    { id: 'InyeccionSQL', titulo: '1. Inyección SQL', icono: <Database size={18} /> },
-    { id: 'XSS', titulo: '2. XSS Reflejado', icono: <Code size={18} /> },
-    { id: 'Comandos', titulo: '3. Command Injection', icono: <TerminalIcon size={18} /> },
-    { id: 'Activos', titulo: 'Activos y Riesgos', icono: <Layers size={18} /> },
-    { id: 'Matriz', titulo: 'Mapa de Calor (Matriz)', icono: <Grid size={18} /> },
-    { id: 'Controles', titulo: 'Mitigación y WAF', icono: <Sliders size={18} /> },
-    { id: 'Recuperacion', titulo: 'Plan de Desastres (DRP)', icono: <RefreshCw size={18} /> },
-    { id: 'Prompts', titulo: 'Bitácora de IA', icono: <Bot size={18} /> },
-  ];
-
-  const renderizarPantalla = () => {
-    switch (vistaActual) {
-      case 'Resumen': return <Resumen />;
-      case 'InyeccionSQL': return <InyeccionSQL />;
-      case 'XSS': return <XSS />;
-      case 'Comandos': return <Comandos />;
-      case 'Activos': return <Activos />;
-      case 'Matriz': return <Matriz />;
-      case 'Controles': return <Controles />;
-      case 'Recuperacion': return <Recuperacion />;
-      case 'Prompts': return <Prompts />;
-      default: return <Resumen />;
-    }
+  // Diccionario maestro de navegación
+  const modulos = {
+    resumen: { label: "Resumen del Negocio", icon: BookOpen, component: Resumen, file: "Resumen.jsx" },
+    sqli: { label: "1. Inyección SQL", icon: Database, component: InyeccionSQL, file: "InyeccionSQL.jsx" },
+    xss: { label: "2. XSS Reflejado", icon: Code, component: XSS, file: "XSS.jsx" },
+    comandos: { label: "3. Command Injection", icon: Terminal, component: Comandos, file: "Comandos.jsx" },
+    activos: { label: "Activos y Riesgos", icon: Layers, component: Activos, file: "Activos.jsx" },
+    matriz: { label: "Mapa de Calor (Matriz)", icon: Grid, component: Matriz, file: "Matriz.jsx" },
+    controles: { label: "Mitigación y WAF", icon: Sliders, component: Controles, file: "Controles.jsx" },
+    recuperacion: { label: "Plan de Desastres (DRP)", icon: RefreshCw, component: Recuperacion, file: "Recuperacion.jsx" },
+    prompts: { label: "Bitácora de IA", icon: Bot, component: Prompts, file: "Prompts.jsx" }
   };
 
+  const ModuloActual = modulos[vista].component;
+
   return (
-    <div className="flex h-screen w-screen bg-slate-950 font-sans text-slate-100 overflow-hidden">
+    <div className="flex h-screen bg-[#070b19] text-slate-100 overflow-hidden font-sans">
       
-      {/* BARRA LATERAL IZQUIERDA (SIDEBAR SOC) */}
-      <aside className="w-72 bg-slate-900 border-r border-slate-800 flex flex-col justify-between z-10 shadow-2xl">
-        <div>
-          {/* Encabezado Marca */}
-          <div className="p-6 border-b border-slate-800/80">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400">
-                <Shield size={24} />
-              </div>
-              <div>
-                <h1 className="font-bold text-lg leading-tight tracking-wide text-white">Conecta<span className="text-red-500">Tel</span></h1>
-                <span className="text-xs font-mono text-slate-400 flex items-center gap-1.5 mt-0.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  ISP Audit Portal
-                </span>
-              </div>
+      {/* ================= BARRA LATERAL IZQUIERDA ================= */}
+      <aside className="w-64 bg-[#0a1023] border-r border-slate-800/80 p-4 flex flex-col shrink-0 select-none">
+        
+        {/* Cabecera / Marca */}
+        <div className="flex items-center gap-3 px-2 mb-8 mt-2">
+          <div className="p-2 bg-red-600/10 border border-red-500/30 rounded-xl text-red-500">
+            <Shield size={24} />
+          </div>
+          <div>
+            <span className="font-bold text-white text-lg block leading-none">ConectaTel</span>
+            <div className="flex items-center gap-1.5 mt-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+              <span className="text-[10px] font-mono text-slate-400">ISP Audit Portal</span>
             </div>
           </div>
-
-          {/* Menú de botones */}
-          <div className="px-3 py-6">
-            <p className="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 font-mono">
-              Módulos del Diagnóstico
-            </p>
-            <nav className="space-y-1">
-              {menuNavegacion.map((item) => {
-                const activo = vistaActual === item.id;
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => setVistaActual(item.id)}
-                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      activo 
-                        ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-900/20 font-semibold translate-x-1' 
-                        : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200'
-                    }`}
-                  >
-                    <span className={activo ? 'text-white' : 'text-slate-500'}>{item.icono}</span>
-                    {item.titulo}
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
         </div>
 
-        {/* Tarjeta inferior de Servidor Activo */}
-        <div className="p-4 m-3 bg-slate-950/60 border border-slate-800/80 rounded-xl">
-          <div className="flex items-center justify-between text-xs text-slate-400 mb-1.5 font-mono">
-            <span>BGP AS99210</span>
-            <span className="text-emerald-400 font-bold">100% UP</span>
-          </div>
-          <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-            <div className="bg-emerald-500 h-full w-full"></div>
-          </div>
+        {/* Menú de navegación */}
+        <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider px-2 mb-3">
+          Módulos del diagnóstico
         </div>
+
+        <nav className="space-y-1 flex-1">
+          {Object.keys(modulos).map((key) => {
+            const item = modulos[key];
+            const Icono = item.icon;
+            const isActive = vista === key;
+
+            return (
+              <button
+                key={key}
+                onClick={() => setVista(key)}
+                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-150 ${
+                  isActive
+                    ? "bg-red-600 text-white font-bold shadow-lg shadow-red-600/20"
+                    : "text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
+                }`}
+              >
+                <Icono size={16} className={isActive ? "text-white" : "text-slate-400"} />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
+        </nav>
+
       </aside>
 
-      {/* ÁREA CENTRAL DE VISUALIZACIÓN */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden bg-slate-950">
+      {/* ================= ZONA CENTRAL DE CONTENIDO ================= */}
+      <main className="flex-1 flex flex-col overflow-y-auto bg-[#070b19]">
         
-        {/* Barra superior de migas de pan */}
-        <header className="h-16 border-b border-slate-800/80 px-8 flex items-center justify-between bg-slate-900/40 backdrop-blur">
-          <div className="flex items-center gap-2 text-sm font-mono text-slate-400">
-            <Server size={16} className="text-slate-500" />
-            <span>auditoria_egaand</span>
-            <span>/</span>
-            <span className="text-red-400 font-semibold">{vistaActual}.jsx</span>
+        {/* Barra superior de información (Breadcrumbs) */}
+        <header className="h-16 border-b border-slate-800/80 px-8 flex items-center justify-between shrink-0 bg-[#0a1023]/50 backdrop-blur">
+          <div className="flex items-center gap-2 font-mono text-xs text-slate-400">
+            <span className="text-slate-500">auditoria_egaand /</span>
+            <span className="text-red-400 font-bold">{modulos[vista].file}</span>
           </div>
-          <div className="flex items-center gap-3 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-full text-xs font-mono text-slate-300">
-            <Activity size={14} className="text-red-400 animate-spin" />
-            <span>Nivel de Seguridad: LOW (DVWA)</span>
+
+          <div className="flex items-center gap-2 px-3 py-1 bg-slate-900/80 border border-slate-800 rounded-full font-mono text-xs text-slate-300">
+            <Zap size={14} className="text-red-500" />
+            <span>Nivel de Seguridad: <strong className="text-slate-400 font-bold">LOW (DVWA)</strong></span>
           </div>
         </header>
 
-        {/* Contenedor con scroll para las pantallas */}
-        <main className="flex-1 overflow-y-auto p-10">
-          <div className="max-w-4xl mx-auto">
-            {renderizarPantalla()}
-          </div>
-        </main>
+        {/* Contenedor dinámico donde se inyecta la vista */}
+        <div className="p-8 max-w-6xl mx-auto w-full flex-1 flex flex-col">
+          
+          <ModuloActual />
 
-        {/* Pie de página académico */}
-        <footer className="h-12 border-t border-slate-800/80 px-8 flex items-center justify-between text-xs text-slate-500 bg-slate-900/20 font-mono">
-          <span>Estudiante: Andrés Sebastián Egaña Flores</span>
-          <span>Docente: Rubén Schnettler • INACAP Valparaíso (T13034)</span>
-        </footer>
-      </div>
+          {/* FOOTER EXCLUSIVO DE GITHUB */}
+          <footer className="mt-auto pt-12 pb-4 text-center font-mono text-xs">
+            <a 
+              href="https://github.com/andresasd952-design" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-slate-700 transition-all duration-200"
+            >
+              <Github size={15} />
+              <span>Ver perfil de GitHub</span>
+            </a>
+          </footer>
+
+        </div>
+
+      </main>
 
     </div>
   );
 }
-
-export default App;
