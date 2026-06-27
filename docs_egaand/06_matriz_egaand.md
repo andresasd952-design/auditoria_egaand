@@ -13,14 +13,6 @@ La clasificación de criticidad de los hallazgos técnicos en la infraestructura
 
 El producto de ambas variables sitúa al hallazgo en una celda de criticidad dentro del Mapa de Calor Corporativo.
 
-### Mapa de Calor de Vulnerabilidades - ConectaTel
-
-| Probabilidad \ Impacto | Bajo | Medio | Alto | Crítico |
-| :--- | :---: | :---: | :---: | :---: |
-| **Alta** | Bajo | **Alto (XSS)** | Alto | **Crítico (SQLi / Cmd Inj)** |
-| **Media** | Bajo | Medio | Alto | Alto |
-| **Baja** | Bajo | Bajo | Medio | Medio |
-
 ---
 
 ## 2. Justificación Analítica de los Hallazgos
